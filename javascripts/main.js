@@ -18,7 +18,6 @@ requirejs(
   ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg"],
   function($,firebase, _, Handlebars, bootstrap, q,loginReg) {
 
- 
     var user;
     var pass;
     var firebaseRef = new firebase("https://nssweatherapp.firebaseio.com");
@@ -28,7 +27,6 @@ requirejs(
       user = $('#username').val();
       pass = $('#password').val();
       loginReg.getLogin(user, pass);
-
     });
 
     //register a new user
@@ -36,7 +34,6 @@ requirejs(
       user = $('#username').val();
       pass = $('#password').val();
       loginReg.getRegister(user, pass);
-
     });
 
     //this handles zip search button functionality for search zip code
@@ -53,10 +50,7 @@ requirejs(
         console.log("test search", zipValue);
         //run search
       }
-    })
-
-
-    
+    })   
 });
 
 
