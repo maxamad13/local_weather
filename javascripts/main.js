@@ -52,7 +52,9 @@ requirejs(
         //run search
         getWeather.getWeather(zipValue, 1);
       }
-    })
+
+    })   
+
 
     $(document).on('click', '#today, #threeDay, #sevenDay', function(){
       var forecastVal = $(this).data('days');
