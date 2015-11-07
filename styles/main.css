@@ -1,7 +1,5 @@
 .col-xs-12 {
-  background-image: url("http://serving.pics/images/2015/02/18/Beautiful-Nature-Spring.jpg");
-  border: 2px solid black;
-  height: 200px; }
+  border: 2px solid black; }
 
 .col-md-6 {
   background-color: blue;
@@ -14,5 +12,8 @@
 
 #zipSearch {
   display: none; }
+
+.dayForecast {
+  display: inline-block; }
 
 /*# sourceMappingURL=main.css.map */

@@ -15,8 +15,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg"],
-  function($,firebase, _, Handlebars, bootstrap, q,loginReg) {
+  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg", "getweather"],
+  function($,firebase, _, Handlebars, bootstrap, q,loginReg, getWeather) {
 
     var user;
     var pass;
@@ -41,6 +41,7 @@ requirejs(
       var zipValue = $('#zip').val();
       console.log("test search", zipValue);
       //run search
+      getWeather.getWeather(zipValue, 1);
     })
 
     //this handles enter functionality for searching zip code
@@ -49,8 +50,29 @@ requirejs(
         var zipValue = $('#zip').val();
         console.log("test search", zipValue);
         //run search
+        getWeather.getWeather(zipValue, 1);
       }
-    })   
+    })
+
+    $(document).on('click', '#today, #threeDay, #sevenDay', function(){
+      var forecastVal = $(this).data('days');
+
+      switch(forecastVal){
+        case 1:
+          console.log("1");
+          getWeather.getWeather(zipValue, 1);
+          break;
+        case 3:
+          console.log("3");
+          getWeather.getWeather(zipValue, 3);
+          break;
+        case 7:
+          console.log("7");
+          getWeather.getWeather(zipValue, 7);
+          break;
+      }
+    })
+
 });
 
 
