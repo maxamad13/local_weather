@@ -1,8 +1,6 @@
 $himage: "http://serving.pics/images/2015/02/18/Beautiful-Nature-Spring.jpg";
 .col-xs-12 {
-  background-image: url($himage);
   border: 2px solid black;
-  height: 200px;
 }
 .col-md-6 {
   background-color: blue;
@@ -15,4 +13,7 @@ $himage: "http://serving.pics/images/2015/02/18/Beautiful-Nature-Spring.jpg";
 }
 #zipSearch{
 	display:none;
+}
+.dayForecast{
+	display:inline-block;
 }
