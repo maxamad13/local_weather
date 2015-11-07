@@ -21,29 +21,38 @@ requirejs(
     var user;
     var pass;
     var firebaseRef = new firebase("https://nssweatherapp.firebaseio.com");
+    var userId;
 
     //login an existing user
     $(document).on('click', '#login', function(){
       user = $('#username').val();
       pass = $('#password').val();
-      loginReg.getLogin(user, pass);
+      loginReg.getLogin(user, pass)
+        .then(function(uid){
+          userId = uid;
+        })
     });
 
     //register a new user
     $(document).on('click', '#register', function(){
       user = $('#username').val();
       pass = $('#password').val();
-      loginReg.getRegister(user, pass);
+      loginReg.getRegister(user, pass)
+        .then(function(uid){
+          userId = uid;
+        })
     });
 
     //this handles zip search button functionality for search zip code
     var zipId;
+    var currentSearch;
     $(document).on('click', '#zipSubmit', function(){
       var zipValue = $('#zip').val();
       console.log("test search", zipValue);
       //run search
       getWeather.getWeather(zipValue, 1)
         .then(function(weatherData){
+          currentSearch=weatherData;
           zipId=weatherData.id;
           $("#forecast").html(forecasts(weatherData));
         });
@@ -57,6 +66,7 @@ requirejs(
         //run search
         getWeather.getWeather(zipValue, 1)
           .then(function(){
+            currentSearch=weatherData;
             $("#forecast").html(forecasts(weatherData));
           })
       }
@@ -72,6 +82,7 @@ requirejs(
           console.log("1");
           getWeather.getWeatherMulti(zipId, 1)
           .then(function(weatherData){
+            currentSearch=weatherData;
             $("#forecast").html(multiDay(weatherData));
           })
           break;
@@ -79,6 +90,7 @@ requirejs(
           console.log("3");
           getWeather.getWeatherMulti(zipId, 3)
           .then(function(weatherData){
+            currentSearch=weatherData;
             $("#forecast").html(multiDay(weatherData));
           })
           break;
@@ -86,10 +98,17 @@ requirejs(
           console.log("7");
           getWeather.getWeatherMulti(zipId, 7)
           .then(function(weatherData){
+            currentSearch=weatherData;
             $("#forecast").html(multiDay(weatherData));
           })
           break;
       }
+    })
+
+    $(document).on('click','.saveFore', function(){
+      var savedSearch = new Date()+1;
+      console.log(userId, savedSearch);
+      firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
     })
 
 });

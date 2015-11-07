@@ -1,11 +1,10 @@
 {{#each list}}
 <div class="dayForecast">
-	<h3 class="Day">Today</h3>
-	
+	<h3 class="Day">day ...</h3>	
 	<p>Temperature: {{this.temp.day}}</p>
 	<p>Conditions: {{this.weather.0.description}}</p>
 	<p>Humidity: {{this.humidity}}</p>
 	<p>Wind Speed: {{this.speed}}</p>
-
 </div>
 {{/each}}
+<button class="saveFore">Save Forecast</button>
