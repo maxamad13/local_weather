@@ -18,11 +18,27 @@ requirejs(
   ["jquery", "lodash", "hbs", "bootstrap", "q"],
   function($, _, Handlebars, bootstrap, q) {
 
- 
-  // alert ("mohamed");
-  
-    // filter back to all
 
+
+     function weather(){  
+
+      var api = "http://api.openweathermap.org/data/2.5/weather?zip=";
+      var city = "37211";
+      var apiCode = ",us&appid=85e2aa2320f9430de316a4ccae178753";
+
+
+      var url = api + city + apiCode;
+      console.log(url);
+      
+    }
+
+
+    weather();
+
+
+
+
+ 
     
     });
 
