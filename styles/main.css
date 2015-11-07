@@ -12,4 +12,7 @@
   position: fixed;
   z-index: 100; }
 
+#zipSearch {
+  display: none; }
+
 /*# sourceMappingURL=main.css.map */

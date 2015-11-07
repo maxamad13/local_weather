@@ -13,6 +13,7 @@ define(["jquery","firebase"], function($,firebase){
 				} else {
 					console.log("login successful");
 					$('#register').hide();
+					$('#zipSearch').show();
 
 				}
 			});
@@ -29,6 +30,8 @@ define(["jquery","firebase"], function($,firebase){
 						//creating a child with uid and setting first value with user email
 						firebaseRef.child('users').child(userData.uid).child('email').set(email);
 						console.log("user created");
+						$('#register').hide();
+						$('#zipSearch').show();
 					}
 			});
 		}
