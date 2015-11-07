@@ -37,14 +37,15 @@ requirejs(
     });
 
     //this handles zip search button functionality for search zip code
+    var zipId;
     $(document).on('click', '#zipSubmit', function(){
       var zipValue = $('#zip').val();
       console.log("test search", zipValue);
       //run search
       getWeather.getWeather(zipValue, 1)
         .then(function(weatherData){
-          console.log(weatherData);
-          $("#forecast").html(forecasts({day:weatherData}));
+          zipId=weatherData.id;
+          $("#forecast").html(forecasts(weatherData));
         });
     })
 
@@ -56,7 +57,7 @@ requirejs(
         //run search
         getWeather.getWeather(zipValue, 1)
           .then(function(){
-
+            $("#forecast").html(forecasts(weatherData));
           })
       }
 
@@ -69,15 +70,15 @@ requirejs(
       switch(forecastVal){
         case 1:
           console.log("1");
-          getWeather.getWeather(zipValue, 1);
+          getWeather.getWeatherMulti(zipId, 1);
           break;
         case 3:
           console.log("3");
-          getWeather.getWeather(zipValue, 3);
+          getWeather.getWeatherMulti(zipId, 3);
           break;
         case 7:
           console.log("7");
-          getWeather.getWeather(zipValue, 7);
+          getWeather.getWeatherMulti(zipId, 7);
           break;
       }
     })
