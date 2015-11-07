@@ -15,13 +15,33 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "lodash", "hbs", "bootstrap", "q"],
-  function($, _, Handlebars, bootstrap, q) {
+  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg"],
+  function($,firebase, _, Handlebars, bootstrap, q,loginReg) {
 
  
-  // alert ("mohamed");
+    var user;
+    var pass;
+    var firebaseRef = new firebase("https://nssweatherapp.firebaseio.com");
+
+    (document).on('click', '#login', function(){
+      user = $('#username').val();
+      pass = $('#password').val();
+      loginReg.getLogin(user, pass)
+
+    })
+
+
+
+
+    (document).on('click', '#login', function(){
+      user = $('#username').val();
+      pass = $('#password').val();
+      loginReg.getRegister(user, pass)
+
+    })
+   //login
   
-    // filter back to all
+    //filter back to all
 
     
     });
