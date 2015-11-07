@@ -1,7 +1,8 @@
 {{#each day}}
 <div class="dayForecast">
-	<p>{{temperature}}</p>
-	<p>{{conditions}}</p>
-	<p>{{airpressure}}</p>
-	<p>{{windspeed}}</p>
+	<p>{{main.temp}}</p>
+	<p>{{weather.0.description}}</p>
+	<p>{{main.pressure}}</p>
+	<p>{{wind.speed}}</p>
 </div>
+{{/each}}

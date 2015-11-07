@@ -8,10 +8,8 @@ define(["jquery", "q"], function($,q){
 			.done(function(weatherData) {
 				weatherData = JSON.stringify(weatherData);
 				weatherData = $.parseJSON(weatherData);
-				console.log(weatherData);
-
 				//returns the promise
-				deferred.resolve();
+				deferred.resolve(weatherData);
 			}).fail(function() {
 				console.log("failed to get weather");
 			});
