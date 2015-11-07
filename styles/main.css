@@ -8,4 +8,8 @@
   border: 2px solid black;
   height: 600px; }
 
+#register {
+  position: fixed;
+  z-index: 100; }
+
 /*# sourceMappingURL=main.css.map */

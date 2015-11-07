@@ -27,8 +27,8 @@ define(["jquery","firebase"], function($,firebase){
 						console.log("Error creating user:", error);
 					} else {
 						//creating a child with uid and setting first value with user email
-						firebaseRef.child('users').child(userData.uid).set(newUser);
-						console.log("user created")
+						firebaseRef.child('users').child(userData.uid).set(email);
+						console.log("user created");
 					}
 			});
 		}

@@ -23,22 +23,22 @@ requirejs(
     var pass;
     var firebaseRef = new firebase("https://nssweatherapp.firebaseio.com");
 
-    (document).on('click', '#login', function(){
+    $(document).on('click', '#login', function(){
       user = $('#username').val();
       pass = $('#password').val();
-      loginReg.getLogin(user, pass)
+      loginReg.getLogin(user, pass);
 
-    })
-
-
+    });
 
 
-    (document).on('click', '#login', function(){
+
+
+    $(document).on('click', '#register', function(){
       user = $('#username').val();
       pass = $('#password').val();
-      loginReg.getRegister(user, pass)
+      loginReg.getRegister(user, pass);
 
-    })
+    });
    //login
   
     //filter back to all
