@@ -15,8 +15,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg", "getweather", "hbs!../templates/forecasts"],
-  function($,firebase, _, Handlebars, bootstrap, q,loginReg, getWeather, forecasts) {
+  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg", "getweather", "hbs!../templates/forecasts", "hbs!../templates/multiDay"],
+  function($,firebase, _, Handlebars, bootstrap, q,loginReg, getWeather, forecasts, multiDay) {
 
     var user;
     var pass;
@@ -70,15 +70,24 @@ requirejs(
       switch(forecastVal){
         case 1:
           console.log("1");
-          getWeather.getWeatherMulti(zipId, 1);
+          getWeather.getWeatherMulti(zipId, 1)
+          .then(function(weatherData){
+            $("#forecast").html(multiDay(weatherData));
+          })
           break;
         case 3:
           console.log("3");
-          getWeather.getWeatherMulti(zipId, 3);
+          getWeather.getWeatherMulti(zipId, 3)
+          .then(function(weatherData){
+            $("#forecast").html(multiDay(weatherData));
+          })
           break;
         case 7:
           console.log("7");
-          getWeather.getWeatherMulti(zipId, 7);
+          getWeather.getWeatherMulti(zipId, 7)
+          .then(function(weatherData){
+            $("#forecast").html(multiDay(weatherData));
+          })
           break;
       }
     })
