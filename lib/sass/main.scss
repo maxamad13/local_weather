@@ -24,7 +24,13 @@ body{
 }
 #zipSearch{
 	display:none;
+
 }
 .dayForecast{
 	display:inline-block;
+	color:red; 
+}
+span {
+	color: red;
+	position: left;
 }

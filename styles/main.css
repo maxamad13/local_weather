@@ -23,6 +23,11 @@ body {
   display: none; }
 
 .dayForecast {
-  display: inline-block; }
+  display: inline-block;
+  color: red; }
+
+span {
+  color: red;
+  position: left; }
 
 /*# sourceMappingURL=main.css.map */
