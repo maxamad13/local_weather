@@ -1,4 +1,5 @@
 $himage: "http://www.anawalls.com/images/textures/background-texture-solid-surface.jpg";
+$limage: "http://ayay.co.uk/backgrounds/weather/clouds/blue-sea-horizon.jpg";
 
 body{
 	background-image:url($himage);
@@ -29,8 +30,4 @@ body{
 .dayForecast{
 	display:inline-block;
 	color:red; 
-}
-span {
-	color: red;
-	position: left;
 }
