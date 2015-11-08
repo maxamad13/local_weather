@@ -15,8 +15,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg", "getweather", "hbs!../templates/forecasts", "hbs!../templates/multiDay"],
-  function($,firebase, _, Handlebars, bootstrap, q,loginReg, getWeather, forecasts, multiDay) {
+  ["jquery","firebase", "lodash", "hbs", "bootstrap", "q", "loginReg", "getweather", "hbs!../templates/forecasts", "hbs!../templates/multiDay","hbs!../templates/savedForecasts"],
+  function($,firebase, _, Handlebars, bootstrap, q,loginReg, getWeather, forecasts, multiDay, savedForecasts) {
 
     var user;
     var pass;
@@ -104,15 +104,18 @@ requirejs(
       }
     })
 
+    //save forecasts to user
     $(document).on('click','.saveFore', function(){
       var savedSearch = new Date()+1;
       console.log(userId, savedSearch);
       firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
     })
+
+    //retrieve forecasts for user
     $(document).on('click', '#savedFore', function(){
       getWeather.retrieveForecasts(userId)
-        .then(function(){
-          //put saved forecasts into handlebars
+        .then(function(allForecasts){
+          $("#forecast").html(savedForecasts({data:allForecasts}));
         })
     })
 

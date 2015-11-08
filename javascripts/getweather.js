@@ -24,7 +24,6 @@ define(["jquery", "q"], function($,q){
 				weatherData = $.parseJSON(weatherData);
 				//returns the promise
 				deferred.resolve(weatherData);
-				console.log(weatherData)
 			}).fail(function() {
 				console.log("failed to get weather");
 			});
@@ -49,8 +48,9 @@ define(["jquery", "q"], function($,q){
 
 			//removes email from allforecasts array
 			allForecasts.pop();
-
+			deferred.resolve(allForecasts);
 			});
+			return deferred.promise;
 		}
 	}
 });	
