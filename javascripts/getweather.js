@@ -29,8 +29,28 @@ define(["jquery", "q"], function($,q){
 				console.log("failed to get weather");
 			});
 			return deferred.promise;
+		},
+		retrieveForecasts: function(uid){
+			console.log("called retrieve forecasts");
+			var deferred = q.defer();
+
+			//creates snapshot of user's firebase data. 
+			var myFirebaseRef = new Firebase("https://nssweatherapp.firebaseio.com/users/"+uid);
+			myFirebaseRef.on("value", function(snapshot){
+			var forecasts = snapshot.val();
+
+			//creates array of objects
+			var allForecasts = [];
+			for(var key in forecasts){
+				var forecastWithId = forecasts[key];
+				forecastWithId.key = key;
+				allForecasts[allForecasts.length] = forecastWithId;
+			}
+
+			//removes email from allforecasts array
+			allForecasts.pop();
+
+			});
 		}
-
-
 	}
 });	

@@ -62,10 +62,9 @@ requirejs(
     $('#zip').keypress(function(e){
       if(e.which === 13){
         var zipValue = $('#zip').val();
-        console.log("test search", zipValue);
         //run search
         getWeather.getWeather(zipValue, 1)
-          .then(function(){
+          .then(function(weatherData){
             currentSearch=weatherData;
             $("#forecast").html(forecasts(weatherData));
           })
@@ -109,6 +108,12 @@ requirejs(
       var savedSearch = new Date()+1;
       console.log(userId, savedSearch);
       firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
+    })
+    $(document).on('click', '#savedFore', function(){
+      getWeather.retrieveForecasts(userId)
+        .then(function(){
+          //put saved forecasts into handlebars
+        })
     })
 
 });
