@@ -9,6 +9,10 @@ define(["jquery", "q"], function($,q){
 				weatherData = $.parseJSON(weatherData);
 				console.log(weatherData);
 				weatherData.dt = new Date();
+				var position = weatherData.dt.toString().indexOf("2015")+4;
+				console.log(position);
+				weatherData.dt = weatherData.dt.toString().slice(0,position);
+				console.log(weatherData.dt);
 				//returns the promise
 				deferred.resolve(weatherData);
 			}).fail(function() {
