@@ -7,12 +7,13 @@ define(["jquery", "q"], function($,q){
 			.done(function(weatherData) {
 				weatherData = JSON.stringify(weatherData);
 				weatherData = $.parseJSON(weatherData);
-				console.log(weatherData);
+
+				//change date to readable format
 				weatherData.dt = new Date();
 				var position = weatherData.dt.toString().indexOf("2015")+4;
 				console.log(position);
 				weatherData.dt = weatherData.dt.toString().slice(0,position);
-				console.log(weatherData.dt);
+
 				//returns the promise
 				deferred.resolve(weatherData);
 			}).fail(function() {
@@ -27,6 +28,25 @@ define(["jquery", "q"], function($,q){
 			.done(function(weatherData) {
 				weatherData = JSON.stringify(weatherData);
 				weatherData = $.parseJSON(weatherData);
+
+				console.log(weatherData);
+				//changes date to readable format
+				for(var i=0; i<weatherData.list.length; i++){
+					//gets data of current day
+					weatherData.list[i].dt = new Date();
+					//gets day of the month
+					var day = weatherData.list[i].dt.getUTCDate();
+					//reseting day based on the iteration from the start day
+					var newDay = weatherData.list[i].dt.setDate(day+i);
+					//tranferring back into a new day object
+					weatherData.list[i].dt = new Date(newDay);
+					//finding the position of 2015 so it can be removed from the date object
+					var position = weatherData.list[i].dt.toString().indexOf("2015")+4;
+					//tranforming the date object into a string, then removing the time portion and reseting the date to that
+					weatherData.list[i].dt = weatherData.list[i].dt.toString().slice(0,position);	
+					console.log(weatherData.list[i].dt);
+				}
+
 				//returns the promise
 				deferred.resolve(weatherData);
 			}).fail(function() {
