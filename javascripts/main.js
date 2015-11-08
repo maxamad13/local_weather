@@ -30,7 +30,7 @@ requirejs(
       loginReg.getLogin(user, pass)
         .then(function(uid){
           userId = uid;
-        })
+        });
     });
 
     //register a new user
@@ -40,7 +40,7 @@ requirejs(
       loginReg.getRegister(user, pass)
         .then(function(uid){
           userId = uid;
-        })
+        });
     });
 
     //this handles zip search button functionality for search zip code
@@ -56,7 +56,7 @@ requirejs(
           zipId=weatherData.id;
           $("#forecast").html(forecasts(weatherData));
         });
-    })
+    });
 
     //this handles enter functionality for searching zip code
     $('#zip').keypress(function(e){
@@ -67,10 +67,10 @@ requirejs(
           .then(function(weatherData){
             currentSearch=weatherData;
             $("#forecast").html(forecasts(weatherData));
-          })
+          });
       }
 
-    })   
+    });   
 
 
     $(document).on('click', '#today, #threeDay, #sevenDay', function(){
@@ -83,7 +83,7 @@ requirejs(
           .then(function(weatherData){
             currentSearch=weatherData;
             $("#forecast").html(multiDay(weatherData));
-          })
+          });
           break;
         case 3:
           console.log("3");
@@ -91,7 +91,7 @@ requirejs(
           .then(function(weatherData){
             currentSearch=weatherData;
             $("#forecast").html(multiDay(weatherData));
-          })
+          });
           break;
         case 7:
           console.log("7");
@@ -99,25 +99,26 @@ requirejs(
           .then(function(weatherData){
             currentSearch=weatherData;
             $("#forecast").html(multiDay(weatherData));
-          })
+          });
           break;
       }
-    })
+    });
 
     //save forecasts to user
     $(document).on('click','.saveFore', function(){
       var savedSearch = new Date()+1;
       console.log(userId, savedSearch);
+      savedSearch.saveDate = new Date();
       firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
-    })
+    });
 
     //retrieve forecasts for user
     $(document).on('click', '#savedFore', function(){
       getWeather.retrieveForecasts(userId)
         .then(function(allForecasts){
           $("#forecast").html(savedForecasts({data:allForecasts}));
-        })
-    })
+        });
+    });
 
 });
 

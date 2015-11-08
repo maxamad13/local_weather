@@ -1,9 +1,10 @@
-{{#each data}}
 <h1 class="savedTitle">Saved Forecasts</h1>
+{{#each data}}
+<h3 class="savedDate">{{saveDate}}</h3>
 <div class="row">
 	{{#each list}}
 	<div class="dayForecast">
-		<h3 class="Day">day ...</h3>	
+		<h3 class="Day">{{this.dt}}</h3>	
 		<p>Temperature: {{this.temp.day}}</p>
 		<p>Conditions: {{this.weather.0.description}}</p>
 		<p>Humidity: {{this.humidity}}</p>
