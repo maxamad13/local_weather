@@ -108,7 +108,9 @@ requirejs(
     $(document).on('click','.saveFore', function(){
       var savedSearch = new Date()+1;
       console.log(userId, savedSearch);
-      savedSearch.saveDate = new Date();
+      console.log(currentSearch);
+      currentSearch.saveDate = new Date();
+      console.log(currentSearch)
       firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
     });
 

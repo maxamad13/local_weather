@@ -29,7 +29,6 @@ define(["jquery", "q"], function($,q){
 				weatherData = JSON.stringify(weatherData);
 				weatherData = $.parseJSON(weatherData);
 
-				console.log(weatherData);
 				//changes date to readable format
 				for(var i=0; i<weatherData.list.length; i++){
 					//gets data of current day
@@ -40,11 +39,10 @@ define(["jquery", "q"], function($,q){
 					var newDay = weatherData.list[i].dt.setDate(day+i);
 					//tranferring back into a new day object
 					weatherData.list[i].dt = new Date(newDay);
-					//finding the position of 2015 so it can be removed from the date object
+					//finding the position of 2015 so the time can be removed from the date object
 					var position = weatherData.list[i].dt.toString().indexOf("2015")+4;
 					//tranforming the date object into a string, then removing the time portion and reseting the date to that
 					weatherData.list[i].dt = weatherData.list[i].dt.toString().slice(0,position);	
-					console.log(weatherData.list[i].dt);
 				}
 
 				//returns the promise
