@@ -14,6 +14,7 @@ define(["jquery","firebase","q"], function($,firebase,q){
 					deferred.resolve(authData.uid);
 					$('#register').hide();
 					$('#zipSearch').show();
+					$('.hideSearches').show();
 				}
 			});
 			return deferred.promise;

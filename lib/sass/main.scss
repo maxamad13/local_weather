@@ -4,27 +4,49 @@ body{
 	background-image:url($himage);
 	color: white;
 }
-
-.col-xs-12 {
-  border: 2px solid black;
-}
 .col-md-6 {
   background-color: blue;
   border: 2px solid black;
   height: 600px;
 }
+//styles search bar
+.hideSearches{
+	display: none;
+	background: rgba(0,0,0,.5);
+}
+//styles login module
 #register{
-	position: fixed;
 	z-index: 100;
 	border: 1px solid black;
 	background-color: rgba(0,0,0, 0.5);
 }
+//styles font color on buttons
 #registerBut, #login, #zipSubmit, .saveFore, input{
 	color: black;
 }
 #zipSearch{
 	display:none;
 }
+//search button styles
+.searchButtons{
+	padding: 5px;
+	margin: 5px 0;
+	display: inline-block;
+}
+.searchButtons:hover{
+	background-color:white;
+	color: black;
+	cursor: pointer;
+}
+//styles each day 
 .dayForecast{
 	display:inline-block;
+    margin: 0 10px 10px 0;
+    background: rgba(0,0,0,.5);
+    padding: 5px;
+    min-width:205px;
+}
+//adds a bottom line to each saved search
+.savedSearch{
+	border-bottom:1px solid black;
 }

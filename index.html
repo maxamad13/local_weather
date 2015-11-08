@@ -9,6 +9,7 @@
 <body>
 
 	<div id="register">
+		<h1>NSS Weather App</h1>
 		<p>Login/Register</p>
 		<p><input id="username"></p>
 		<p><input type="password" id="password"></p>
@@ -20,17 +21,18 @@
 
 
 	
-	<div class="container"> 
+	<div class="container hideSearches">
+		<h1>NSS Weather App</h1>
 		<div class="row">	
 			<div class="col-xs-12">
 				<div id="zipSearch">
 					<input id="zip">
 					<button id="zipSubmit">Submit Zipcode</button>
 				</div>
-				<span id="today" data-days="1">Today</span>
-				<span id="threeDay" data-days="3">3 Day</span>
-				<span id="sevenDay" data-days="7">7 Day</span>
-				<span id="savedFore">Saved Forecasts</span>
+				<span class="searchButtons" id="today" data-days="1">Today</span>
+				<span class="searchButtons" id="threeDay" data-days="3">3 Day</span>
+				<span class="searchButtons" id="sevenDay" data-days="7">7 Day</span>
+				<span class="searchButtons" id="savedFore">Saved Forecasts</span>
 			</div>
 		</div>
 	</div>
