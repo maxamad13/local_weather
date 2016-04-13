@@ -13,5 +13,5 @@ This project was built with:
 
   to run:
   1. Clone the repo
-  2. within the lib folder, type `bower install --save` and `npm install --save`
+  2. On the command line, within the lib folder, run `bower install --save` and `npm install --save`
   3. You're all set! Feel free to run on your server
