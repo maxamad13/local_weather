@@ -1,6 +1,8 @@
 body {
   background-image: url("http://www.anawalls.com/images/textures/background-texture-solid-surface.jpg");
-  color: white; }
+  color: white; 
+  background-attachment: fixed;
+}
 
 .col-md-6 {
   background-color: blue;

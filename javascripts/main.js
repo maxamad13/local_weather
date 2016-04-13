@@ -107,8 +107,6 @@ requirejs(
     //save forecasts to user
     $(document).on('click','.saveFore', function(){
       var savedSearch = new Date()+1;
-      console.log(userId, savedSearch);
-      console.log(currentSearch);
       currentSearch.saveDate = new Date();
       console.log(currentSearch)
       firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
@@ -118,6 +116,7 @@ requirejs(
     $(document).on('click', '#savedFore', function(){
       getWeather.retrieveForecasts(userId)
         .then(function(allForecasts){
+          console.log(allForecasts);
           $("#forecast").html(savedForecasts({data:allForecasts}));
         });
     });
