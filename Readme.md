@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This NSS project is a basic local weather app. Using the OpenWeather Api, it was designed to retrieve the current forecast for the current day, the next three days, and the next seven days. 
 
 A user has the ability to create an account and then search by zip code for the desired forecast. A user can then save the specified forecast chosen to their "Saved Forecasts" section. 
