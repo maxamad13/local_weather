@@ -1,7 +1,6 @@
 <h1 class="savedTitle">Saved Forecasts</h1>
 {{#each data}}
-<h2 class="savedDate">Date Saved: {{this.dt}}</h2>
-<h3 class="savedDate">{{this.city.name}}</h3>
+<h3 class="savedDate">{{this.city.name}}<span class="deleteIcon glyphicon glyphicon-remove-circle" aria-hidden="true"></span></h3>
 <div class="savedSearch">
 	{{#each list}}
 	<div class="dayForecast">

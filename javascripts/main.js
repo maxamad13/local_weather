@@ -48,7 +48,7 @@ requirejs(
     var currentSearch;
     $(document).on('click', '#zipSubmit', function(){
       var zipValue = $('#zip').val();
-      console.log("test search", zipValue);
+
       //run search
       getWeather.getWeather(zipValue, 1)
         .then(function(weatherData){
@@ -60,25 +60,25 @@ requirejs(
 
     //this handles enter functionality for searching zip code
     $('#zip').keypress(function(e){
-      if(e.which === 13){
+      if(e.which === 13){     
         var zipValue = $('#zip').val();
         //run search
         getWeather.getWeather(zipValue, 1)
           .then(function(weatherData){
             currentSearch=weatherData;
+            zipId=weatherData.id;
             $("#forecast").html(forecasts(weatherData));
           });
       }
-
     });   
 
 
     $(document).on('click', '#today, #threeDay, #sevenDay', function(){
+      
       var forecastVal = $(this).data('days');
 
       switch(forecastVal){
         case 1:
-          console.log("1");
           getWeather.getWeatherMulti(zipId, 1)
           .then(function(weatherData){
             currentSearch=weatherData;
@@ -86,7 +86,6 @@ requirejs(
           });
           break;
         case 3:
-          console.log("3");
           getWeather.getWeatherMulti(zipId, 3)
           .then(function(weatherData){
             currentSearch=weatherData;
@@ -94,7 +93,6 @@ requirejs(
           });
           break;
         case 7:
-          console.log("7");
           getWeather.getWeatherMulti(zipId, 7)
           .then(function(weatherData){
             currentSearch=weatherData;
@@ -108,7 +106,6 @@ requirejs(
     $(document).on('click','.saveFore', function(){
       var savedSearch = new Date()+1;
       currentSearch.saveDate = new Date();
-      console.log(currentSearch)
       firebaseRef.child('users').child(userId).child(savedSearch).set(currentSearch);
     });
 
@@ -116,11 +113,9 @@ requirejs(
     $(document).on('click', '#savedFore', function(){
       getWeather.retrieveForecasts(userId)
         .then(function(allForecasts){
-          console.log(allForecasts);
           $("#forecast").html(savedForecasts({data:allForecasts}));
         });
     });
-
 });
 
 

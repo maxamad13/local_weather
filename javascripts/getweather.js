@@ -1,7 +1,9 @@
 define(["jquery", "q"], function($,q){
 	return{
+
 		getWeather: function(zipCode,dayAmount){
 			var deferred = q.defer();
+			
 			//ajax call to return weather results
 			$.ajax("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid=85e2aa2320f9430de316a4ccae178753&units=imperial")
 			.done(function(weatherData) {
@@ -22,14 +24,16 @@ define(["jquery", "q"], function($,q){
 			});
 			return deferred.promise;
 		},
+
 		getWeatherMulti: function(zipId,dayAmount){
 			var deferred = q.defer();
+
 			//ajax call to return weather results
 			$.ajax("http://api.openweathermap.org/data/2.5/forecast/daily?id="+zipId+",us&appid=85e2aa2320f9430de316a4ccae178753&units=imperial&cnt="+dayAmount)
 			.done(function(weatherData) {
 				weatherData = JSON.stringify(weatherData);
 				weatherData = $.parseJSON(weatherData);
-
+				console.log(weatherData);
 				//changes date to readable format
 				for(var i=0; i<weatherData.list.length; i++){
 					//gets data of current day
@@ -49,6 +53,7 @@ define(["jquery", "q"], function($,q){
 					weatherData.list[i].dt = dayend+ ", "+dateend+", "+weatherData.list[i].dt.toString().slice(11,position);
 					//weatherData.list[i].dt = weatherData.list[i].dt.toString().slice(0,position);	
 				}
+
 				//returns the promise
 				deferred.resolve(weatherData);
 			}).fail(function() {
@@ -56,6 +61,7 @@ define(["jquery", "q"], function($,q){
 			});
 			return deferred.promise;
 		},
+
 		retrieveForecasts: function(uid){
 			var deferred = q.defer();
 
@@ -71,13 +77,6 @@ define(["jquery", "q"], function($,q){
 				forecastWithId.key = key;
 				allForecasts[allForecasts.length] = forecastWithId;
 			}
-
-
-			// //edit datesaved
-			// for(var i=0; i<allForecasts.length; i++){
-			// 	var position = allForecasts[i].key.toString().indexOf("2016")+4;
-			// 	allForecasts[i].key = allForecasts[i].key.slice(0,3) + ", " + allForecasts[i].key.slice(4,9) + "," + allForecasts[i].key.slice(10,position);
-			// }
 
 			//removes email from allforecasts array
 			allForecasts.pop();
